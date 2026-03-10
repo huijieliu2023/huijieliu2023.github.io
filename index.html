@@ -1,63 +1,285 @@
 <!DOCTYPE html>
-<div>
-<h1>Huijie Liu</h1>
-<p><b>Assistant Professor</b><br>
-Shenzhen University</p>
-<p>Email: <a href="mailto:huijieliu@szu.edu.cn">huijieliu@szu.edu.cn</a></p>
-<div class="links">
-<a href="https://scholar.google.com/citations?user=_59cKfAAAAAJ&hl=zh-CN" target="_blank">Google Scholar</a>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Huijie Liu</title>
+  <style>
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Helvetica Neue", Arial, sans-serif;
+      background: #f3f6fb;
+      color: #1f2937;
+      line-height: 1.7;
+    }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
 
-</div>
-</div>
-</header>
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid #e5e7eb;
+    }
+    .topbar-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+    .brand {
+      font-size: 20px;
+      font-weight: 700;
+      color: #111827;
+    }
+    .nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+      font-size: 15px;
+    }
+    .nav a {
+      color: #4b5563;
+      font-weight: 500;
+    }
+    .nav a:hover {
+      color: #111827;
+      text-decoration: none;
+    }
 
-<section class="card">
-<h2>Biography</h2>
-<p>
-I am currently an Assistant Professor with the <b>Visual Computing Research Center (VCC)</b> (led by <b>Prof. Hui Huang</b>) at the College of Computer Science and Software Engineering, Shenzhen University.
-I received my Ph.D. from the University of Science and Technology of China under the supervision of <b>Prof. Enhong Chen</b> and <b>Prof. Qi Liu</b>. 
-My research focuses on data mining, graph neural networks, knowledge relation modeling, technological knowledge mining, and multimodal large models.
-</p>
-</section>
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 36px 24px 64px;
+    }
+    .card {
+      background: #ffffff;
+      border: 1px solid #e5e7eb;
+      border-radius: 20px;
+      box-shadow: 0 10px 30px rgba(15, 23, 42, 0.06);
+    }
 
-<section id="experience" class="card">
-<h2>Academic Experience</h2>
-<ul>
-<li>Feb 2026 – Present, Assistant Professor, College of Computer Science and Software Engineering, Shenzhen University</li>
-<li>Sep 2019 – Nov 2025, Ph.D. in Computer Science and Technology (Data Science), University of Science and Technology of China</li>
-<li>Feb 2025 – Oct 2025, Visiting Scholar, Tsinghua Shenzhen International Graduate School</li>
-<li>Jul 2024 – Jan 2025, Visiting Scholar, Information Hub, Hong Kong University of Science and Technology (Guangzhou)</li>
-<li>Oct 2021 – Mar 2022, Research Intern, Huawei Cloud BU</li>
-<li>Sep 2015 – Jul 2019, B.S. in Statistics, University of Science and Technology of China</li>
-</ul>
-</section>
+    .hero {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+      gap: 32px;
+      align-items: center;
+      padding: 32px;
+      margin-bottom: 26px;
+    }
+    .hero img {
+      width: 200px;
+      height: 200px;
+      object-fit: cover;
+      border-radius: 50%;
+      border: 5px solid #e5e7eb;
+      display: block;
+      background: #fff;
+    }
+    .hero h1 {
+      margin: 0 0 10px 0;
+      font-size: 42px;
+      line-height: 1.15;
+      color: #0f172a;
+    }
+    .subtitle {
+      font-size: 19px;
+      color: #374151;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    .affiliation {
+      color: #6b7280;
+      margin-bottom: 14px;
+      font-size: 17px;
+    }
+    .email {
+      color: #374151;
+      margin-bottom: 16px;
+      font-size: 16px;
+    }
+    .button-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 10px;
+    }
+    .btn {
+      display: inline-block;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #1d4ed8;
+      text-decoration: none;
+    }
+    .btn-secondary {
+      background: #eff6ff;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+    }
+    .btn-secondary:hover {
+      background: #dbeafe;
+      text-decoration: none;
+    }
 
-<section id="publications" class="card">
-<h2>Selected Publications</h2>
-<div class="pub">[1] <b>Huijie Liu</b>, Shulan Ruan, Qi Liu, Mingyue Cheng, Zhenya Huang, Yu Liu, Enhong Chen, You He. Global Structure-aware and Feature-augmented Graph Neural Network for Heterophilic Graphs. <i>ACM Transactions on Information Systems (TOIS, CCF A, JCR Q1)</i>, 2025, 44(2):1-28.</div>
-<div class="pub">[2] <b>Huijie Liu</b>, Shulan Ruan, Han Wu, Zhenya Huang, Defu Lian, Qi Liu, Enhong Chen. Multi-view Heterogeneous HyperGNN for Heterophilic Knowledge Combination Prediction. <i>IEEE Transactions on Big Data (TBD, JCR Q1, IF 7.5)</i>, 2025, 11(5): 2321-2337.</div>
-<div class="pub">[3] <b>Huijie Liu</b>, Han Wu, Le Zhang, Runlong Yu, Ye Liu, Chunli Liu, Minglei Li, Qi Liu, Enhong Chen. A hierarchical interactive multi-channel graph neural network for technological knowledge flow forecasting. <i>Knowledge and Information Systems (KAIS, CCF B, JCR Q2)</i>, 2022, 64(7): 1723-1757.</div>
-<div class="pub">[4] <b>Huijie Liu</b>, Han Wu, Le Zhang, Runlong Yu, Ye Liu, Chunli Liu, Qi Liu, Enhong Chen. Technological Knowledge Flow Forecasting through A Hierarchical Interactive Graph Neural Networks. <i>IEEE International Conference on Data Mining (ICDM, CCF B, ICDM Best-Ranked Papers)</i>, 2021, pp. 389–398.</div>
-<div class="pub">[5] Shulan Ruan, <b>Huijie Liu</b>*, Zhao Chen, et al. CPWS: Confident Programmatic Weak Supervision for High-Quality Data Labeling. <i>ACM Transactions on Information Systems (TOIS, CCF A, JCR Q1)</i>, 2025, 43(4): 1-26. (*Corresponding Author)</div>
-<div class="pub">[6] Bin Feng, Shulan Ruan, Likang Wu, <b>Huijie Liu</b>, et al. Caption Matters: A New Perspective for Knowledge-based Visual Question Answering. <i>Knowledge and Information Systems (KAIS, CCF B)</i>, 2024, 66(11): 6975-7003.</div>
-<div class="pub">[7] Bin Feng, Shulan Ruan, Mingzheng Yang, Dongxuan Han, <b>Huijie Liu</b>, et al. SentiFormer: Metadata Enhanced Transformer for Image Sentiment Analysis. <i>IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP)</i>, 2025: 1-5.</div>
-<div class="pub">[8] Jun Yu, Shengzhao Li, <b>Huijie Liu</b>, Qi Liu, Chang Tan, Zhiyuan Cheng, Jinze Wu. EduYOLO: A Classroom Behavior Recognition Framework Based on High-Resolution Feature Attention Fusion. <i>Expert Systems with Applications (ESWA, JCR Q1)</i>, 2026.</div>
-</section>
+    .content-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 26px;
+      align-items: start;
+    }
+    .section {
+      padding: 26px 28px;
+      margin-bottom: 24px;
+    }
+    .section h2 {
+      margin: 0 0 16px 0;
+      font-size: 25px;
+      color: #111827;
+    }
+    .section p { margin: 0; }
+    .section ul {
+      margin: 0;
+      padding-left: 22px;
+    }
+    .section li { margin-bottom: 10px; }
+
+    .pub-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .pub-item {
+      padding: 14px 16px;
+      background: #f8fafc;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      font-size: 15px;
+      line-height: 1.75;
+    }
+    .pub-item i { color: #374151; }
+
+    .students-box {
+      background: linear-gradient(135deg, #eff6ff, #f8fafc);
+    }
+
+    footer {
+      text-align: center;
+      color: #6b7280;
+      margin-top: 32px;
+      font-size: 14px;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+      .hero img { margin: 0 auto; }
+      .button-row { justify-content: center; }
+      .content-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="topbar-inner">
+      <div class="brand">Huijie Liu</div>
+      <div class="nav">
+        <a href="#home">Home</a>
+        <a href="#research">Research</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Experience</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <section id="home" class="card hero">
+      <img src="profile.jpg" alt="Huijie Liu" />
+      <div>
+        <h1>Huijie Liu</h1>
+        <div class="subtitle">Assistant Professor</div>
+        <div class="affiliation">Shenzhen University</div>
+        <div class="email">Email: <a href="mailto:huijieliu@szu.edu.cn">huijieliu@szu.edu.cn</a></div>
+        <div class="button-row">
+          <a class="btn btn-primary" href="https://scholar.google.com/citations?user=_59cKfAAAAAJ&hl=zh-CN" target="_blank">Google Scholar</a>
+          <a class="btn btn-secondary" href="#publications">Selected Publications</a>
+          <a class="btn btn-secondary" href="#experience">Academic Experience</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="content-grid">
+      <div>
+        <section class="card section">
+          <h2>Biography</h2>
+          <p>
+            I am currently an Assistant Professor with the <b>Visual Computing Research Center (VCC)</b> (led by <b>Prof. Hui Huang</b>) at the College of Computer Science and Software Engineering, Shenzhen University. I received my Ph.D. from the University of Science and Technology of China under the supervision of <b>Prof. Enhong Chen</b> and <b>Prof. Qi Liu</b>. My research focuses on data mining, graph neural networks, knowledge relation modeling, technological knowledge mining, and multimodal large models.
+          </p>
+        </section>
+
+        <section id="experience" class="card section">
+          <h2>Academic Experience</h2>
+          <ul>
+            <li>Feb 2026 – Present, Assistant Professor, College of Computer Science and Software Engineering, Shenzhen University</li>
+            <li>Sep 2019 – Nov 2025, Ph.D. in Computer Science and Technology (Data Science), University of Science and Technology of China</li>
+            <li>Feb 2025 – Oct 2025, Visiting Scholar, Tsinghua Shenzhen International Graduate School</li>
+            <li>Jul 2024 – Jan 2025, Visiting Scholar, Information Hub, Hong Kong University of Science and Technology (Guangzhou)</li>
+            <li>Oct 2021 – Mar 2022, Research Intern, Huawei Cloud BU</li>
+            <li>Sep 2015 – Jul 2019, B.S. in Statistics, University of Science and Technology of China</li>
+          </ul>
+        </section>
+
+        <section id="publications" class="card section">
+          <h2>Selected Publications</h2>
+          <div class="pub-list">
+            <div class="pub-item">[1] <b>Huijie Liu</b>, Shulan Ruan, Qi Liu, Mingyue Cheng, Zhenya Huang, Yu Liu, Enhong Chen, You He. Global Structure-aware and Feature-augmented Graph Neural Network for Heterophilic Graphs. <i>ACM Transactions on Information Systems (TOIS, CCF A, JCR Q1)</i>, 2025, 44(2): 1–28.</div>
+            <div class="pub-item">[2] <b>Huijie Liu</b>, Shulan Ruan, Han Wu, Zhenya Huang, Defu Lian, Qi Liu, Enhong Chen. Multi-view Heterogeneous HyperGNN for Heterophilic Knowledge Combination Prediction. <i>IEEE Transactions on Big Data (TBD, JCR Q1, IF 7.5)</i>, 2025, 11(5): 2321–2337.</div>
+            <div class="pub-item">[3] <b>Huijie Liu</b>, Han Wu, Le Zhang, Runlong Yu, Ye Liu, Chunli Liu, Minglei Li, Qi Liu, Enhong Chen. A Hierarchical Interactive Multi-channel Graph Neural Network for Technological Knowledge Flow Forecasting. <i>Knowledge and Information Systems (KAIS, CCF B, JCR Q2)</i>, 2022, 64(7): 1723–1757.</div>
+            <div class="pub-item">[4] <b>Huijie Liu</b>, Han Wu, Le Zhang, Runlong Yu, Ye Liu, Chunli Liu, Qi Liu, Enhong Chen. Technological Knowledge Flow Forecasting through A Hierarchical Interactive Graph Neural Networks. <i>2021 IEEE International Conference on Data Mining (ICDM, CCF B, ICDM Best-Ranked Papers)</i>, 2021, pp. 389–398.</div>
+            <div class="pub-item">[5] Shulan Ruan, <b>Huijie Liu</b>*, Zhao Chen, et al. CPWS: Confident Programmatic Weak Supervision for High-Quality Data Labeling. <i>ACM Transactions on Information Systems (TOIS, CCF A, JCR Q1)</i>, 2025, 43(4): 1–26. (*Corresponding Author)</div>
+            <div class="pub-item">[6] Bin Feng, Shulan Ruan, Likang Wu, <b>Huijie Liu</b>, et al. Caption Matters: A New Perspective for Knowledge-based Visual Question Answering. <i>Knowledge and Information Systems (KAIS, CCF B)</i>, 2024, 66(11): 6975–7003.</div>
+            <div class="pub-item">[7] Bin Feng, Shulan Ruan, Mingzheng Yang, Dongxuan Han, <b>Huijie Liu</b>, et al. SentiFormer: Metadata Enhanced Transformer for Image Sentiment Analysis. <i>2025 IEEE International Conference on Acoustics, Speech, and Signal Processing (ICASSP, CCF B)</i>, 2025: 1–5.</div>
+            <div class="pub-item">[8] Jun Yu, Shengzhao Li, <b>Huijie Liu</b>, Qi Liu, Chang Tan, Zhiyuan Cheng, Jinze Wu. EduYOLO: A Classroom Behavior Recognition Framework Based on High-Resolution Feature Attention Fusion. <i>Expert Systems with Applications (ESWA, JCR Q1)</i>, 2026.</div>
+          </div>
+        </section>
+      </div>
+      
+      <div>
+        
 
 
+        <section class="card section students-box">
+          <h2>Students</h2>
+          <p>
+            Prospective master’s students and undergraduate research interns interested in data mining, graph neural networks, and multimodal AI are welcome to contact me.
+          </p>
+        </section>
+      </div>
+    </div>
 
-<section class="card">
-<h2>Students</h2>
-<p>
-Prospective master's students and undergraduate research interns interested in data mining, graph neural networks, and multimodal AI are welcome to contact me.
-</p>
-</section>
-
-<footer style="text-align:center;margin-top:40px;color:#777">
-© 2026 Huijie Liu
-</footer>
-
-</div>
-
+    <footer>
+      © 2026 Huijie Liu
+    </footer>
+  </div>
 </body>
 </html>
