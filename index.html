@@ -1,58 +1,343 @@
-<!DOCTYPE html>
-<html>
-<head>
-<meta charset="UTF-8">
-<title>Huijie Liu</title>
-<style>
-body{
-    font-family: Arial;
-    margin:40px;
-    max-width:900px;
-    line-height:1.6;
+import React from "react";
+import { motion } from "framer-motion";
+import {
+  Mail,
+  GraduationCap,
+  BookOpen,
+  Briefcase,
+  Award,
+  Users,
+  FileText,
+  MapPin,
+  ExternalLink,
+  Building2,
+  Cpu,
+  Network,
+  Eye,
+  Library,
+} from "lucide-react";
+import { Card, CardContent } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+
+const profile = {
+  nameCn: "刘慧杰",
+  nameEn: "Huijie Liu",
+  title: "Assistant Professor",
+  subtitle: "Ph.D. · Master's Supervisor",
+  affiliation: "Shenzhen University",
+  email: "your_email@university.edu.cn",
+  office: "Please add your office location",
+  intro:
+    "Huijie Liu is an Assistant Professor whose research centers on data mining and artificial intelligence, with particular interests in graph neural networks, knowledge relation modeling, visual understanding, and multimodal large models. Her recent work focuses on technological knowledge flow and combination modeling, graph representation learning, and AI methods for complex real-world data.",
+};
+
+const researchAreas = [
+  {
+    icon: Network,
+    title: "Graph Neural Networks",
+    desc: "Heterophilic graph learning, hypergraph representation learning, structure-aware propagation, and graph contrastive learning.",
+  },
+  {
+    icon: Library,
+    title: "Knowledge Relation Modeling",
+    desc: "Technological knowledge flow, knowledge combination, relation prediction, and dynamic evolution modeling in patent and innovation scenarios.",
+  },
+  {
+    icon: Cpu,
+    title: "Data Mining & Knowledge Discovery",
+    desc: "Representation learning, relational data mining, weak supervision, and intelligent analysis for large-scale structured and unstructured data.",
+  },
+  {
+    icon: Eye,
+    title: "Vision & Multimodal AI",
+    desc: "Visual understanding, multimodal large models, and AI methods for educational and practical intelligent systems.",
+  },
+];
+
+const selectedPublications = [
+  {
+    title: "Global Structure-aware and Feature-augmented Graph Neural Network for Heterophilic Graphs",
+    venue: "ACM Transactions on Information Systems (TOIS)",
+    tag: "Graph Learning",
+  },
+  {
+    title: "Multi-view Heterogeneous HyperGNN for Heterophilic Knowledge Combination Prediction",
+    venue: "IEEE Transactions on Big Data (TBD)",
+    tag: "Hypergraph Learning",
+  },
+  {
+    title: "Hierarchical Interactive Multi-channel GNN for Technological Knowledge Flow Forecasting",
+    venue: "Knowledge and Information Systems (KAIS)",
+    tag: "Knowledge Flow",
+  },
+  {
+    title: "Technological Knowledge Flow Forecasting",
+    venue: "ICDM Best-Ranked Papers",
+    tag: "Data Mining",
+  },
+  {
+    title: "Representative works on multimodal learning, weak supervision, and visual understanding",
+    venue: "Ongoing / Selected Projects",
+    tag: "Multimodal AI",
+  },
+];
+
+const experiences = [
+  "Received B.S., M.S., and Ph.D. training at the University of Science and Technology of China.",
+  "Visited Tsinghua Shenzhen International Graduate School for academic exchange.",
+  "Visited HKUST (Guangzhou) for collaborative research.",
+  "Worked with industry partners including Huawei, Baidu, and iFLYTEK in research collaboration.",
+];
+
+const services = [
+  "Reviewer / PC member for major journals and conferences in data mining, machine learning, and AI.",
+  "Research collaboration across academia and industry in graph learning, patent analytics, and multimodal intelligence.",
+  "Student supervision for graduate students and undergraduate research interns.",
+];
+
+const stats = [
+  { label: "Publications", value: "8+" },
+  { label: "First/Corresponding", value: "5+" },
+  { label: "Patents", value: "4" },
+  { label: "Collaborations", value: "10+" },
+];
+
+const links = [
+  { label: "Google Scholar", value: "Add your link" },
+  { label: "DBLP", value: "Add your link" },
+  { label: "GitHub", value: "https://github.com/huijieliu2023" },
+  { label: "ORCID", value: "Add your link" },
+];
+
+function SectionTitle({ icon: Icon, title, subtitle }: { icon: any; title: string; subtitle?: string }) {
+  return (
+    <div className="mb-6 flex items-center gap-3">
+      <div className="rounded-2xl bg-slate-100 p-3">
+        <Icon className="h-5 w-5 text-slate-700" />
+      </div>
+      <div>
+        <h2 className="text-2xl font-semibold tracking-tight text-slate-900">{title}</h2>
+        {subtitle && <p className="text-sm text-slate-500">{subtitle}</p>}
+      </div>
+    </div>
+  );
 }
-h1{
-    font-size:36px;
+
+function Pill({ text }: { text: string }) {
+  return <span className="rounded-full bg-slate-100 px-3 py-1 text-sm text-slate-600">{text}</span>;
 }
-h2{
-    margin-top:30px;
+
+export default function PersonalHomepage() {
+  return (
+    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-slate-100 text-slate-800">
+      <div className="mx-auto max-w-6xl px-6 py-10 lg:px-8">
+        <motion.header
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="grid gap-6 lg:grid-cols-[1.55fr_0.95fr]"
+        >
+          <Card className="overflow-hidden rounded-3xl border-0 shadow-lg">
+            <CardContent className="p-8 md:p-10">
+              <div className="mb-4 inline-flex items-center rounded-full border border-slate-200 bg-white px-4 py-1 text-sm text-slate-600">
+                {profile.title} · {profile.subtitle}
+              </div>
+              <h1 className="text-4xl font-bold tracking-tight text-slate-950 md:text-5xl">{profile.nameCn}</h1>
+              <p className="mt-3 text-lg text-slate-600">{profile.nameEn}</p>
+              <p className="mt-6 max-w-3xl text-base leading-8 text-slate-700">{profile.intro}</p>
+
+              <div className="mt-6 flex flex-wrap gap-2">
+                <Pill text="Data Mining" />
+                <Pill text="Graph Neural Networks" />
+                <Pill text="Knowledge Modeling" />
+                <Pill text="Multimodal AI" />
+              </div>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Button className="rounded-2xl px-5">Publications</Button>
+                <Button variant="outline" className="rounded-2xl px-5">Open Positions</Button>
+              </div>
+
+              <div className="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+                {stats.map((item) => (
+                  <div key={item.label} className="rounded-2xl bg-slate-50 p-4 ring-1 ring-slate-200">
+                    <div className="text-2xl font-bold text-slate-950">{item.value}</div>
+                    <div className="mt-1 text-sm text-slate-500">{item.label}</div>
+                  </div>
+                ))}
+              </div>
+            </CardContent>
+          </Card>
+
+          <Card className="rounded-3xl border-0 shadow-lg">
+            <CardContent className="flex h-full flex-col justify-between p-8">
+              <div>
+                <div className="mx-auto mb-6 flex h-28 w-28 items-center justify-center rounded-full bg-slate-900 text-3xl font-semibold text-white">
+                  HL
+                </div>
+                <div className="space-y-4 text-sm text-slate-600">
+                  <div className="flex items-start gap-3">
+                    <Building2 className="mt-0.5 h-4 w-4" />
+                    <span>{profile.affiliation}</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <GraduationCap className="mt-0.5 h-4 w-4" />
+                    <span>University of Science and Technology of China</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <MapPin className="mt-0.5 h-4 w-4" />
+                    <span>{profile.office}</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Award className="mt-0.5 h-4 w-4" />
+                    <span>ICDM Best-Ranked Papers and related representative research outputs</span>
+                  </div>
+                  <div className="flex items-start gap-3">
+                    <Mail className="mt-0.5 h-4 w-4" />
+                    <span>{profile.email}</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-8 rounded-2xl bg-slate-50 p-4 text-sm leading-7 text-slate-700 ring-1 ring-slate-200">
+                Prospective master’s students and undergraduate research interns interested in data mining, graph learning, and multimodal AI are welcome to contact me.
+              </div>
+            </CardContent>
+          </Card>
+        </motion.header>
+
+        <main className="mt-10 grid gap-10 lg:grid-cols-[1.1fr_0.9fr]">
+          <div className="space-y-10">
+            <section>
+              <SectionTitle icon={BookOpen} title="Research Interests" subtitle="Main research themes" />
+              <div className="grid gap-4 sm:grid-cols-2">
+                {researchAreas.map((area, idx) => {
+                  const Icon = area.icon;
+                  return (
+                    <motion.div
+                      key={area.title}
+                      initial={{ opacity: 0, y: 10 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.05 }}
+                      className="rounded-2xl bg-white p-5 shadow-sm ring-1 ring-slate-200"
+                    >
+                      <div className="mb-3 flex items-center gap-3">
+                        <div className="rounded-xl bg-slate-100 p-2">
+                          <Icon className="h-5 w-5 text-slate-700" />
+                        </div>
+                        <div className="text-base font-semibold text-slate-900">{area.title}</div>
+                      </div>
+                      <p className="text-sm leading-7 text-slate-600">{area.desc}</p>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            </section>
+
+            <section>
+              <SectionTitle icon={FileText} title="Selected Publications" subtitle="Representative research outputs" />
+              <div className="space-y-4">
+                {selectedPublications.map((pub, idx) => (
+                  <motion.div
+                    key={pub.title}
+                    initial={{ opacity: 0, y: 10 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: idx * 0.05 }}
+                  >
+                    <Card className="rounded-2xl border-0 shadow-sm ring-1 ring-slate-200">
+                      <CardContent className="p-5">
+                        <div className="text-lg font-semibold leading-7 text-slate-900">{pub.title}</div>
+                        <div className="mt-2 flex flex-wrap items-center gap-2 text-sm text-slate-500">
+                          <span className="rounded-full bg-slate-100 px-3 py-1">{pub.venue}</span>
+                          <span className="rounded-full bg-slate-50 px-3 py-1 ring-1 ring-slate-200">{pub.tag}</span>
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </motion.div>
+                ))}
+              </div>
+            </section>
+
+            <section>
+              <SectionTitle icon={Briefcase} title="Academic & Industrial Collaboration" subtitle="Exchange and cooperation" />
+              <Card className="rounded-3xl border-0 shadow-sm ring-1 ring-slate-200">
+                <CardContent className="p-6">
+                  <div className="space-y-4">
+                    {experiences.map((exp, idx) => (
+                      <div key={exp} className="flex gap-4">
+                        <div className="mt-2 h-2.5 w-2.5 rounded-full bg-slate-400" />
+                        <div>
+                          <div className="text-sm leading-7 text-slate-700">{exp}</div>
+                          <div className="text-xs text-slate-400">Experience {idx + 1}</div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+          </div>
+
+          <div className="space-y-10">
+            <section>
+              <SectionTitle icon={Users} title="Open Positions" subtitle="Students and collaborators" />
+              <Card className="rounded-3xl border-0 shadow-sm ring-1 ring-slate-200">
+                <CardContent className="p-6 text-sm leading-8 text-slate-700">
+                  I welcome motivated students and research interns with interests in data mining, graph neural networks, knowledge discovery, visual understanding, and multimodal large models. Please feel free to contact me by email with your CV, transcript, and a brief statement of research interests.
+                </CardContent>
+              </Card>
+            </section>
+
+            <section>
+              <SectionTitle icon={Award} title="Academic Service" subtitle="Professional activities" />
+              <Card className="rounded-3xl border-0 shadow-sm ring-1 ring-slate-200">
+                <CardContent className="p-6">
+                  <div className="space-y-3 text-sm leading-7 text-slate-700">
+                    {services.map((item) => (
+                      <div key={item} className="flex gap-3">
+                        <div className="mt-2 h-2 w-2 rounded-full bg-slate-400" />
+                        <div>{item}</div>
+                      </div>
+                    ))}
+                  </div>
+                </CardContent>
+              </Card>
+            </section>
+
+            <section>
+              <SectionTitle icon={ExternalLink} title="Links" subtitle="Profiles and external pages" />
+              <Card className="rounded-3xl border-0 shadow-sm ring-1 ring-slate-200">
+                <CardContent className="p-6 space-y-3 text-sm text-slate-700">
+                  {links.map((link) => (
+                    <div key={link.label} className="flex items-center justify-between gap-4 rounded-2xl bg-slate-50 px-4 py-3 ring-1 ring-slate-200">
+                      <span className="font-medium text-slate-900">{link.label}</span>
+                      <span className="truncate text-slate-500">{link.value}</span>
+                    </div>
+                  ))}
+                </CardContent>
+              </Card>
+            </section>
+
+            <section>
+              <SectionTitle icon={Mail} title="Contact" subtitle="Get in touch" />
+              <Card className="rounded-3xl border-0 shadow-sm ring-1 ring-slate-200">
+                <CardContent className="p-6 space-y-3 text-sm text-slate-700">
+                  <p><span className="font-medium text-slate-900">Name:</span> {profile.nameEn}</p>
+                  <p><span className="font-medium text-slate-900">Affiliation:</span> {profile.affiliation}</p>
+                  <p><span className="font-medium text-slate-900">Email:</span> {profile.email}</p>
+                  <p><span className="font-medium text-slate-900">Office:</span> {profile.office}</p>
+                </CardContent>
+              </Card>
+            </section>
+          </div>
+        </main>
+
+        <footer className="mt-12 border-t border-slate-200 pt-6 text-center text-sm text-slate-500">
+          © 2026 {profile.nameEn}. All rights reserved.
+        </footer>
+      </div>
+    </div>
+  );
 }
-</style>
-</head>
-
-<body>
-
-<h1>Huijie Liu</h1>
-
-<p>
-Assistant Professor<br>
-Research Areas: Data Mining, Graph Neural Networks, Multimodal AI
-</p>
-
-<h2>Biography</h2>
-<p>
-Huijie Liu received the Ph.D. degree from the University of Science and Technology of China.
-His research focuses on data mining, graph neural networks, knowledge relation modeling, and multimodal large models.
-</p>
-
-<h2>Research Interests</h2>
-<ul>
-<li>Data Mining</li>
-<li>Graph Neural Networks</li>
-<li>Knowledge Relation Modeling</li>
-<li>Multimodal Large Models</li>
-</ul>
-
-<h2>Selected Publications</h2>
-<ul>
-<li>Global Structure-aware and Feature-augmented Graph Neural Network for Heterophilic Graphs, ACM TOIS</li>
-<li>Multi-view Heterogeneous HyperGNN for Knowledge Combination Prediction, IEEE TBD</li>
-<li>Technological Knowledge Flow Forecasting, KAIS</li>
-</ul>
-
-<h2>Contact</h2>
-<p>
-Email: your_email@university.edu.cn
-</p>
-
-</body>
-</html>
