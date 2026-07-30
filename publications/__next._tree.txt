@@ -1,0 +1,8 @@
+:HL["/_next/static/chunks/01gqzxj_3n2r4.css","style"]
+:HL["/papers/gsf.png","image"]
+:HL["/papers/h3kcp.png","image"]
+:HL["/papers/cpws.png","image"]
+:HL["/papers/hightkf.png","image"]
+:HL["/papers/dpcgl.png","image"]
+:HL["/papers/caption-matters.png","image"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"publications","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"VdD6MZ48Byiz5WgbvrGp6"}
